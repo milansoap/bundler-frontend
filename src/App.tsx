@@ -1,22 +1,18 @@
 import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './components/Login/Login';
+
 
 function App() {
   return (
-    <>
-    <div className="navbar">
-  <div className="navbar-section">
-    <a className="navbar-link">
-      <i className="nav-icon">Icon 1</i>
-    </a>
-    <a className="navbar-link">
-      <i className="nav-icon">Icon 2</i>
-    </a>
-  </div>
-</div>
-
-<button className='btn'> aaaaa </button>
-
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />}>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
