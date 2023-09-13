@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Modal from "../../shared/Modal";
 
 export const Canvas = () => {
-  const [elements, setElements] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => {
     setIsOpen(false);
@@ -12,7 +11,7 @@ export const Canvas = () => {
 
   return (
     <div className="canvas">
-      {isOpen && <Modal closeModal={closeModal} elements={[]} />}
+      {isOpen && <Modal closeModal={closeModal} />}
       <div className="web-content"></div>
       <div className="creator-container">
         <div className="icon">
