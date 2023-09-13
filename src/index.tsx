@@ -5,6 +5,8 @@ import './styles/main.scss'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './context/AuthProvider';
+import 'font-awesome/css/font-awesome.min.css';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
