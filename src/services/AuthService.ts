@@ -9,7 +9,10 @@ class AuthService {
         email,
         password,
       });
+      console.log(response)
+
       return response.data;
+      console.log(response)
     } catch (error) {
       return null;
     }

@@ -23,6 +23,8 @@ const Login = () => {
         isAuthenticated: true,
         // token: data.token TBI
       });
+      console.log(data.access_token)
+      localStorage.setItem('authToken', data.access_token);
       toast('You have logged in successfully! ',
         {
           icon: '✔️ ',

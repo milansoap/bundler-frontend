@@ -1,20 +1,24 @@
 import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // if you are using react-router-dom
 import { AuthContext } from '../../context/AuthProvider';
+import { useAuth } from '../../hooks/UseAuth';
+import WithAuth from '../../wrappers/WithAuth';
 
 const Dashboard = () => {
-  const { auth } = useContext(AuthContext);
+  const { setAuth } = useAuth();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!auth.isAuthenticated) {
-      navigate("/login");  // Redirect to login
-    }
-  }, [auth, navigate]);
+  const logout = () => {
+    localStorage.removeItem('authToken');
+    setAuth({ isAuthenticated: false });
+    navigate('/login');
+  };
 
   return (
-    <div>Dashboard</div>
+    <div>
+      Dashboard
+      <button onClick={logout}>LOGOUT</button>
+    </div>
   );
-}
+};
 
-export default Dashboard;
+export default WithAuth(Dashboard);
