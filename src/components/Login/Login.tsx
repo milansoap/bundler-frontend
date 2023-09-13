@@ -1,65 +1,55 @@
-import React, { useState, useContext } from 'react';
-import AuthService from '../../services/AuthService'; // adjust the path as necessary
-import toast, { Toaster } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthProvider';
-
+import React, { useState, useContext } from "react";
+import AuthService from "../../services/AuthService"; // adjust the path as necessary
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Login = () => {
-
   const { setAuth } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-
-  const handleLogin = async (e: { preventDefault: () => void; }) => {
+  const handleLogin = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const data = await AuthService.login(email, password);
-    console.log(data)
-    if (data?.status === 'OK') {
+    console.log(data);
+    if (data?.status === "OK") {
       setAuth({
         isAuthenticated: true,
         // token: data.token TBI
       });
-      console.log(data.access_token)
-      localStorage.setItem('authToken', data.access_token);
-      toast('You have logged in successfully! ',
-        {
-          icon: '✔️ ',
-          style: {
-            borderRadius: '10px',
-            background: 'green',
-            color: '#fff',
-          },
-        }
-      );
+      console.log(data.access_token);
+      localStorage.setItem("authToken", data.access_token);
+      toast("You have logged in successfully! ", {
+        icon: "✔️ ",
+        style: {
+          borderRadius: "10px",
+          background: "green",
+          color: "#fff",
+        },
+      });
       setTimeout(() => {
-        navigate('/dashboard');
+        navigate("/dashboard");
       }, 800);
-      
     } else {
-      toast(data.message,
-        {
-          icon: '❌',
-          style: {
-            borderRadius: '10px',
-            background: 'red',
-            color: '#fff',
-          },
-        }
-      );
+      toast(data.message, {
+        icon: "❌",
+        style: {
+          borderRadius: "10px",
+          background: "red",
+          color: "#fff",
+        },
+      });
     }
   };
 
-
-
   return (
-    <div className='align-center h-full d-flex justify-center align-center'>
+    <div className="align-center h-full d-flex justify-center align-center">
       <Toaster />
-      <div className='container p-5 w-35'>
-        <h1 className='justify-center d-flex'>Login</h1>
+      <div className="container p-5 w-35">
+        <h1 className="justify-center d-flex">Login</h1>
         <form onSubmit={handleLogin}>
           <div className="form-group">
             <label htmlFor="username">Email</label>
@@ -88,7 +78,9 @@ const Login = () => {
             Login
           </button>
         </form>
-        <a className='text-muted d-flex justify-center mt-1'>Don't have an account?</a>
+        <a className="text-muted d-flex justify-center mt-1">
+          Don't have an account?
+        </a>
       </div>
     </div>
   );
