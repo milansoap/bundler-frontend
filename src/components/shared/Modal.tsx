@@ -40,6 +40,8 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
     const newDiv = document.createElement(config.element_type || "div");
     console.log(config);
 
+    const uniqueDomId = `element-${Date.now()}`;
+    newDiv.id = uniqueDomId;
     newDiv.style.color = config.text_color;
     newDiv.style.backgroundColor = config.background_color;
     newDiv.style.borderColor = config.border_color;
@@ -51,10 +53,13 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
     newDiv.style.borderWidth = config.border_width;
     newDiv.style.borderStyle = config.border_style;
     newDiv.style.borderRadius = config.border_radius;
+
+    const updatedElement = { ...element, dom_id: uniqueDomId };
+
     newDiv.classList.add("hoverable");
     newDiv.addEventListener("click", () => {
       console.log("Element clicked");
-      setSelectedGlobalElement(element);
+      setSelectedGlobalElement(updatedElement);
     });
 
     const canvasEditor = document.getElementById("web-content");
