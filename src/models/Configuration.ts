@@ -1,10 +1,15 @@
 export class Configuration {
-    id!: number;
-    textColor!: string;
-    backgroundColor!: string;
-    borderColor!: string;
-    fontSize!: number;
-    fontFamily!: string;
-    content!: string;
-  }
-  
+  id!: number;
+  text_color!: string;
+  background_color!: string;
+  border_color!: string;
+  font_size!: string;
+  font_family!: string;
+  content!: string;
+  element_type!: string;
+  margin: any;
+  padding: any;
+  border_width: any;
+  border_style: any;
+  border_radius: any;
+}
