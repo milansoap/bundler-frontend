@@ -2,6 +2,8 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import Modal from "../../shared/Modal";
+import { useGlobalElement } from "../../../context/SelectedGobalElementContext";
+import { MyElement } from "../../../models/MyElement";
 
 export const Canvas = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,10 +11,15 @@ export const Canvas = () => {
     setIsOpen(false);
   };
 
+  const { setSelectedGlobalElement } = useGlobalElement();
+  const handleElementClick = (element: MyElement) => {
+    setSelectedGlobalElement(element);
+  };
+
   return (
     <div className="canvas">
       {isOpen && <Modal closeModal={closeModal} />}
-      <div className="web-content"></div>
+      <div className="web-content" id="web-content"></div>
       <div className="creator-container">
         <div className="icon">
           <button

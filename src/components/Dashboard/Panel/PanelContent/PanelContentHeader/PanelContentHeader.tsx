@@ -1,14 +1,18 @@
 import React from "react";
 
-const PanelContentHeader = () => {
+interface PanelContentHeaderProps {
+  headers: Header[];
+}
+
+const PanelContentHeader: React.FC<PanelContentHeaderProps> = ({ headers }) => {
   return (
-    <>
-      <div className="content-header">
-        <div className="header-item-active">A</div>
-        <div className="header-item">A</div>
-        <div className="header-item">A</div>
-      </div>
-    </>
+    <div className="content-header">
+      {headers.map((header, index) => (
+        <div className="header-item" key={index}>
+          {header.title}
+        </div>
+      ))}
+    </div>
   );
 };
 

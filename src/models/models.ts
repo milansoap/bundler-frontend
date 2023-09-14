@@ -1,7 +1,6 @@
-import { Element } from "./Element";
+import { MyElement } from "./MyElement";
 import { Configuration } from "./Configuration";
-import { Page } from "./Page";  
+import { Page } from "./Page";
 import { User } from "./User";
 
-
-export {Element, Configuration, Page, User}
+export { MyElement, Configuration, Page, User };
