@@ -1,8 +1,8 @@
-interface HeaderSettings {
-  backgroundColor?: string;
-  fontSize?: string;
-}
-interface Header {
+import { Configuration } from "../Configuration";
+
+export interface HeaderSettings extends Partial<Configuration> {}
+
+export interface Header {
   title: string;
   settings: HeaderSettings;
 }

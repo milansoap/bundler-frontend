@@ -1,4 +1,5 @@
 import React from "react";
+import { Header } from "../../../../../models/settings/Header";
 
 interface PanelContentHeaderProps {
   headers: Header[];

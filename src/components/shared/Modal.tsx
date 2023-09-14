@@ -6,6 +6,7 @@ import ElementService from "../../services/ElementService";
 import ElementList from "../ElementList/ElementList";
 import { Configuration } from "../../models/Configuration";
 import { useGlobalElement } from "../../context/SelectedGobalElementContext";
+import { toCamelCase } from "../../helpers/converters/toCamelCase";
 
 interface ModalProps {
   closeModal: () => void;
@@ -37,6 +38,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
 
     const config: Configuration = element.configuration;
     const newDiv = document.createElement(config.element_type || "div");
+    console.log(config);
 
     newDiv.style.color = config.text_color;
     newDiv.style.backgroundColor = config.background_color;
@@ -55,15 +57,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
       setSelectedGlobalElement(element);
     });
 
-    // newDiv.addEventListener("click", () => {
-    //   displayConfigInPanel(config);
-    // });
-
     const canvasEditor = document.getElementById("web-content");
-
-    if (!newDiv) {
-      console.log("I DONT EXIST");
-    }
 
     if (canvasEditor && newDiv) {
       canvasEditor.appendChild(newDiv);

@@ -4,6 +4,6 @@ export class MyElement {
   id!: number;
   type!: string;
   name!: string;
-  isCustom!: boolean;
+  is_custom!: boolean;
   configuration!: Configuration;
 }
