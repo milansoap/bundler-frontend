@@ -6,13 +6,14 @@ import { faBars, faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import PanelHeader from "./PanelHeader/PanelHeader";
 import PanelFooter from "./PanelFooter/PanelFooter";
 import PanelContent from "./PanelContent/PanelContent";
+import { PanelProvider } from "../../../context/PanelContext";
 
 const Panel = () => {
   return (
     <>
-      <PanelHeader />
-      <PanelContent />
-      <PanelFooter />
+        <PanelHeader />
+        <PanelContent />
+        <PanelFooter />
     </>
   );
 };

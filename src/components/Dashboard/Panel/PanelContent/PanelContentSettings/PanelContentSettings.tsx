@@ -9,7 +9,7 @@ const PanelContentSettings: React.FC<{ selectedHeader: Header | null }> = ({
     useGlobalElement();
 
   if (!selectedHeader || !selectedGlobalElement)
-    return <p>No Header Selected</p>;
+    return <p className="justify-center">No Header Selected</p>;
 
   const { settings } = selectedHeader;
 
@@ -25,7 +25,7 @@ const PanelContentSettings: React.FC<{ selectedHeader: Header | null }> = ({
   };
 
   return (
-    <div>
+    <div className="content-settings">
       {Object.keys(settings).map((key, index) => (
         <div key={index}>
           <label>{key}</label>

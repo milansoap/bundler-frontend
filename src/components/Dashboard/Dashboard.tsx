@@ -7,20 +7,29 @@ import EditorSettings from "./Panel/Panel";
 import { Canvas } from "./Canvas/Canvas";
 import Panel from "./Panel/Panel";
 import { GlobalElementProvider } from "../../context/SelectedGobalElementContext";
+import { PanelProvider } from "../../context/PanelContext";
+import { CurrentPageProvider } from "../../context/CurrentPageProvider";
+import { ElementsProvider } from "../../context/ElementsFromCurrentContext";
 
 const Dashboard = () => {
   const [currentSettings, setCurrentSettings] = useState(null);
 
   return (
     <>
-      <GlobalElementProvider>
-        <div className="dashboard-container">
-          <div className="panel">
-            <Panel />
-          </div>
-          <Canvas />
-        </div>
-      </GlobalElementProvider>
+      <PanelProvider>
+        <GlobalElementProvider>
+          <CurrentPageProvider>
+            <ElementsProvider>
+              <div className="dashboard-container">
+                <div className="panel">
+                  <Panel />
+                </div>
+                <Canvas />
+              </div>
+            </ElementsProvider>
+          </CurrentPageProvider>
+        </GlobalElementProvider>
+      </PanelProvider>
     </>
   );
 };

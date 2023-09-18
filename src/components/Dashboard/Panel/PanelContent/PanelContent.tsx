@@ -4,7 +4,11 @@ import PanelContentSettings from "./PanelContentSettings/PanelContentSettings";
 import { useGlobalElement } from "../../../../context/SelectedGobalElementContext";
 import { getHeadersByElementType } from "../../../../helpers/getHeadersByElementType";
 import { Header } from "../../../../models/settings/Header";
+import { usePanelContext } from "../../../../context/PanelContext";
+import PageList from "./PanelContentSettings/PageList/PageList";
 const PanelContent = () => {
+  const { activePanel } = usePanelContext(); // Use the context
+
   const { selectedGlobalElement } = useGlobalElement();
   const [selectedHeader, setSelectedHeader] = useState<Header | null>(null); // Here is where the state is defined
 
@@ -20,11 +24,16 @@ const PanelContent = () => {
   return (
     <>
       <div className="content">
-        <PanelContentHeader
-          headers={headerPropsArray}
-          setSelectedHeader={setSelectedHeader}
-        />
-        <PanelContentSettings selectedHeader={selectedHeader} />
+        {activePanel === "ElementEditor" && (
+          <>
+            <PanelContentHeader
+              headers={headerPropsArray}
+              setSelectedHeader={setSelectedHeader}
+            />
+            <PanelContentSettings selectedHeader={selectedHeader} />
+          </>
+        )}
+        {activePanel === "DatabasePages" && <PageList />}
       </div>
     </>
   );

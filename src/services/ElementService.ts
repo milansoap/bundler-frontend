@@ -11,6 +11,10 @@ class ElementService {
         console.error("An error occurred while fetching data: ", error);
       });
   }
+
+  async fetchAllElementsForPage(id: number) {
+
+  }
 }
 
 export default new ElementService();

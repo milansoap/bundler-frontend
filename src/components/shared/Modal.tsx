@@ -17,6 +17,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   const [selectedElement, setSelectedElement] = useState<MyElement | null>(
     null
   );
+
   const { setSelectedGlobalElement } = useGlobalElement();
 
   useEffect(() => {
