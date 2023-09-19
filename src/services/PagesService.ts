@@ -39,13 +39,30 @@ class PageService {
 
   async saveElements(elements: MyElement[], pageId: number) {
     try {
-      console.log(elements)
+      // Conversion function
+      const convertToPHPFormat = (element: MyElement) => ({
+        id: element.id,
+        type: element.type,
+        name: element.name,
+        is_custom: element.is_custom,
+        configuration: element.configuration,
+        unique_element_id: element.unique_element_id, // You can generate this if needed
+        page_id: element.page_id,
+      });
+
+      // Convert elements to the expected PHP format
+      const convertedElements = elements.map(convertToPHPFormat);
+
+      console.log(convertedElements);
+
+      // Make the Axios request
       const response = await axios.post(
-        `${this.baseURL}/pages/save/${pageId}` , // change to your actual API endpoint
+        `${this.baseURL}/pages/save/${pageId}`, // Change to your actual API endpoint
         {
-          elements,
+          elements: convertedElements,
         }
       );
+
       if (response.data) {
         console.log("Elements saved successfully");
         return response.data;

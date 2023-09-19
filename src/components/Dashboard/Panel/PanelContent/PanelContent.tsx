@@ -29,6 +29,7 @@ const PanelContent = () => {
             <PanelContentHeader
               headers={headerPropsArray}
               setSelectedHeader={setSelectedHeader}
+              selectedHeader={selectedHeader}
             />
             <PanelContentSettings selectedHeader={selectedHeader} />
           </>

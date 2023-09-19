@@ -3,18 +3,24 @@ import { Header } from "../../../../../models/settings/Header";
 
 interface PanelContentHeaderProps {
   headers: Header[];
-  setSelectedHeader: (element: Header) => void | null;
+  setSelectedHeader: (element: Header) => void;
+  selectedHeader: Header | null;
 }
 
 const PanelContentHeader: React.FC<PanelContentHeaderProps> = ({
   headers,
   setSelectedHeader,
+  selectedHeader,
 }) => {
   return (
     <div className="content-header">
       {headers.map((header, index) => (
         <div
-          className="header-item"
+          className={
+            selectedHeader && selectedHeader.title === header.title
+              ? "header-item-active"
+              : "header-item"
+          }
           key={index}
           onClick={() => setSelectedHeader(header)}
         >

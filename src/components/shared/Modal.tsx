@@ -7,6 +7,7 @@ import ElementList from "../ElementList/ElementList";
 import { Configuration } from "../../models/Configuration";
 import { useGlobalElement } from "../../context/SelectedGobalElementContext";
 import { toCamelCase } from "../../helpers/converters/toCamelCase";
+import { useElementsContext } from "../../context/ElementsFromCurrentContext";
 
 interface ModalProps {
   closeModal: () => void;
@@ -17,6 +18,8 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   const [selectedElement, setSelectedElement] = useState<MyElement | null>(
     null
   );
+  const { currentPageElements, setCurrentPageElements } = useElementsContext();
+
 
   const { setSelectedGlobalElement } = useGlobalElement();
 
@@ -32,6 +35,18 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   }, [selectedElement]);
 
   function insertElementToCanvas(element: MyElement | null) {
+
+    if (element !== null) {
+      if (currentPageElements !== null) {
+        const updatedPageElements = [...currentPageElements, element];
+        setCurrentPageElements(updatedPageElements);
+      } else {
+        setCurrentPageElements([element]);
+      }
+    } else {
+      // Handle the null newElement case if you need to
+    }
+    
     if (element === null) {
       console.error("Element is null, cannot proceed.");
       return;

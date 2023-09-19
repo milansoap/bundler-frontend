@@ -1,4 +1,6 @@
 import { MyElement } from "../../models/MyElement";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; // import styles
 
 export const optionsForDiv = (selectedElement: MyElement) => {
   console.log(selectedElement);
@@ -6,16 +8,16 @@ export const optionsForDiv = (selectedElement: MyElement) => {
     {
       title: "Style",
       settings: {
-        text_color: selectedElement.configuration.text_color,
         background_color: selectedElement.configuration.background_color,
-        font_size: selectedElement.configuration.font_size,
-        font_family: selectedElement.configuration.font_family,
       },
     },
     {
-      title: "Content",
+      title: "Text",
       settings: {
         content: selectedElement.configuration.content,
+        text_color: selectedElement.configuration.text_color,
+        font_size: selectedElement.configuration.font_size,
+        font_family: selectedElement.configuration.font_family,
       },
     },
     {
