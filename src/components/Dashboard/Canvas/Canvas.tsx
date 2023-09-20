@@ -48,8 +48,8 @@ export const Canvas = () => {
           newDiv.style.color = element.configuration.text_color;
           newDiv.style.backgroundColor = element.configuration.background_color;
           newDiv.style.borderColor = element.configuration.border_color;
-          newDiv.style.fontSize = element.configuration.font_size;
-          newDiv.style.fontFamily = element.configuration.font_family;
+          // newDiv.style.fontSize = element.configuration.font_size;
+          // newDiv.style.fontFamily = element.configuration.font_family;
           newDiv.innerHTML = element.configuration.content;
           newDiv.style.margin = element.configuration.margin;
           newDiv.style.padding = element.configuration.padding;

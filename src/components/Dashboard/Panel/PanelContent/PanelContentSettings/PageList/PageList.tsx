@@ -14,7 +14,7 @@ const PageList: React.FC = () => {
       PageService.getPagesByUserId(auth.user.id).then((pages) => {
         if (pages) {
           console.log("Received pages:", pages);
-          setPages(pages)
+          setPages(pages);
         }
       });
     }
@@ -25,6 +25,9 @@ const PageList: React.FC = () => {
       {pages.map((page) => (
         <PageListItem key={page.id} id={page.id} title={page.title} />
       ))}
+      <div className="justify-center text-center mt-4 w-100">
+        <button className="btn__primary w-50"> ADD NEW PAGE </button>
+      </div>
     </div>
   );
 };

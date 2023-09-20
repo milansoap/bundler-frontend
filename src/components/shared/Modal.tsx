@@ -20,7 +20,6 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   );
   const { currentPageElements, setCurrentPageElements } = useElementsContext();
 
-
   const { setSelectedGlobalElement } = useGlobalElement();
 
   useEffect(() => {
@@ -35,7 +34,6 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   }, [selectedElement]);
 
   function insertElementToCanvas(element: MyElement | null) {
-
     if (element !== null) {
       if (currentPageElements !== null) {
         const updatedPageElements = [...currentPageElements, element];
@@ -46,7 +44,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
     } else {
       // Handle the null newElement case if you need to
     }
-    
+
     if (element === null) {
       console.error("Element is null, cannot proceed.");
       return;
@@ -61,8 +59,8 @@ const Modal: React.FC<ModalProps> = ({ closeModal }) => {
     newDiv.style.color = config.text_color;
     newDiv.style.backgroundColor = config.background_color;
     newDiv.style.borderColor = config.border_color;
-    newDiv.style.fontSize = config.font_size;
-    newDiv.style.fontFamily = config.font_family;
+    // newDiv.style.fontSize = config.font_size;
+    // newDiv.style.fontFamily = config.font_family;
     newDiv.innerHTML = config.content;
     newDiv.style.margin = config.margin;
     newDiv.style.padding = config.padding;

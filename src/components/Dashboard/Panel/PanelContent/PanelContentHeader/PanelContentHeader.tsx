@@ -12,6 +12,7 @@ const PanelContentHeader: React.FC<PanelContentHeaderProps> = ({
   setSelectedHeader,
   selectedHeader,
 }) => {
+
   return (
     <div className="content-header">
       {headers.map((header, index) => (

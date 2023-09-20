@@ -34,6 +34,7 @@ const PanelContentSettings: React.FC<{ selectedHeader: Header | null }> = ({
     return null;
   }
 
+
   return (
     <div className="content-settings">
       {Object.keys(settings).map((key, index) => {

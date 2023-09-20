@@ -6,19 +6,25 @@ import { getHeadersByElementType } from "../../../../helpers/getHeadersByElement
 import { Header } from "../../../../models/settings/Header";
 import { usePanelContext } from "../../../../context/PanelContext";
 import PageList from "./PanelContentSettings/PageList/PageList";
+import Logs from "./PanelContentSettings/Logs/Logs";
 const PanelContent = () => {
-  const { activePanel } = usePanelContext(); // Use the context
+  const { activePanel } = usePanelContext();
 
   const { selectedGlobalElement } = useGlobalElement();
-  const [selectedHeader, setSelectedHeader] = useState<Header | null>(null); // Here is where the state is defined
+  const [selectedHeader, setSelectedHeader] = useState<Header | null>(null);
 
   const headerPropsArray = selectedGlobalElement
     ? getHeadersByElementType(selectedGlobalElement)
     : [];
+
   useEffect(() => {
-    console.log("Selected Element:", selectedGlobalElement);
-    console.log(headerPropsArray);
-    console.log("SELECTED HEADER" + selectedHeader?.title);
+    const headerPropsArray = selectedGlobalElement
+      ? getHeadersByElementType(selectedGlobalElement)
+      : [];
+    // setting default header
+    if (!selectedHeader && headerPropsArray.length > 0) {
+      setSelectedHeader(headerPropsArray[2]);
+    }
   }, [selectedGlobalElement, selectedHeader]);
 
   return (
@@ -35,6 +41,8 @@ const PanelContent = () => {
           </>
         )}
         {activePanel === "DatabasePages" && <PageList />}
+        {activePanel === "Logs" && <Logs />}
+
       </div>
     </>
   );
