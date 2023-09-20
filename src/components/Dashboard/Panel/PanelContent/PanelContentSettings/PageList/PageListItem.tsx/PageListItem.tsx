@@ -15,7 +15,10 @@ const PageListItem: React.FC<PageListItemProps> = ({ id, title }) => {
   };
 
   return (
-    <div className="page-list-item" key={id}>
+    <div
+      className={`page-list-item ${pageId === id ? "active" : ""}`}
+      key={id}
+    >
       <div className="page-title">{title}</div>
       <div className="page-actions">
         <button className="icon-button">👁️</button>

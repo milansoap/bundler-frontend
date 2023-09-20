@@ -8,10 +8,10 @@ import { usePanelContext } from "../../../../context/PanelContext";
 const PanelHeader = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
-  const { setActivePanel } = usePanelContext(); // Assuming you have setActivePanel in your context
+  const { setActivePanel } = usePanelContext();
 
   const openDatabasePagesList = () => {
-    setActivePanel("DatabasePages"); // or whatever panel you want to switch to
+    setActivePanel("DatabasePages");
   };
   // const logout = () => {
   //   localStorage.removeItem("authToken");

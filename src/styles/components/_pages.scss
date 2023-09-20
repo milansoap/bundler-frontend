@@ -2,22 +2,56 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  padding: 12px;
+  border-bottom: 2px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.page-list-item:hover {
+  opacity: 1;
+  box-shadow: 0 2px 8px $gray-700;
+}
+
+.page-list-item.active {
+  background-color: $gray-800;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .page-title {
   flex-grow: 1;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.page-title:hover {
+  color: #007bff;
 }
 
 .page-actions {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .icon-button {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1.5em;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.icon-button:hover {
+  color: #007bff;
+  transform: scale(1.5);
 }

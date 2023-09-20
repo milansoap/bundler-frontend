@@ -3,6 +3,8 @@ import React from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { SketchPicker } from "react-color";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 interface SettingsItemProps {
   label: string;
@@ -29,10 +31,23 @@ const SettingsItem: React.FC<SettingsItemProps> = ({
         {type === "richText" ? (
           <ReactQuill value={value} onChange={onChange} />
         ) : type === "color" ? (
-          <SketchPicker
-            color={value}
-            onChangeComplete={(color) => onChange(color.hex)}
-          />
+          <div
+            style={{ width: "100%", display: "flex", justifyContent: "center" }}
+          >
+            <SketchPicker
+              color={value}
+              onChangeComplete={(color) => onChange(color.hex)}
+            />
+          </div>
+        ) : type === "range" ? (
+          <div style={{ width: "100%" }}>
+            <Slider
+              value={Number(value)}
+              onChange={(val: any) => onChange(val.toString())}
+              min={0}
+              max={500}
+            />
+          </div>
         ) : (
           <>
             <input
